@@ -14,10 +14,12 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.notesapp.R
 import com.example.notesapp.Route
 
 
@@ -40,8 +42,10 @@ fun AllNotes(
             items(items = notes) { note ->
                 Surface(modifier = Modifier
                     .fillMaxSize()
-                    .border(width = 2 .dp  ,color = androidx.compose.ui.graphics.Color.Black,
-                   shape = RectangleShape )
+                    .border(
+                        width = 2.dp, color = androidx.compose.ui.graphics.Color.Black,
+                        shape = RectangleShape
+                    )
 
                     .clickable { navController.navigate(Route.SingleNote.createRoute(note.id)) }) {
                     Text(textAlign = TextAlign.Center,
@@ -55,7 +59,7 @@ fun AllNotes(
             onClick = { navController.navigate(Route.NewNote.routeTemplate)
         },
         ) {
-            Text(text = "Add note")
+            Text(text = stringResource(R.string.add))
         }
     }
 }
