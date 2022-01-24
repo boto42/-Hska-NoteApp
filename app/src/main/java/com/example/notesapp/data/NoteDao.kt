@@ -13,7 +13,7 @@ interface NoteDao {
     @Delete
     suspend fun delete(note: Note)
 
-    @Query("select * from note order by createdAt asc")
+    @Query("select * from note order by createdAt desc")
     fun getAll(): Flow<List<Note>>
 
     @Query("select * from note where id= :id")
