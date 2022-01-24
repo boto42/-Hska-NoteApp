@@ -1,24 +1,20 @@
 package com.example.notesapp.screens
 
-import androidx.compose.foundation.horizontalScroll
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.notesapp.viewmodel.NoteViewModel
-import java.sql.Date
-import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
@@ -28,25 +24,15 @@ fun NewNote(
     noteViewModel: NoteViewModel
 
 ){
+    val scaffoldState = rememberScaffoldState()
     val scroll = rememberScrollState(0)
+    val textStateTitle = remember { mutableStateOf(TextFieldValue()) }
+    val textStateNote = remember { mutableStateOf(TextFieldValue()) }
+    Scaffold(scaffoldState=scaffoldState,
+        content ={
     Column(Modifier.fillMaxWidth()) {
-        val textStateTitle = remember { mutableStateOf(TextFieldValue()) }
-        val textStateNote = remember { mutableStateOf(TextFieldValue()) }
-        Button(modifier = Modifier
-            .align(Alignment.CenterHorizontally)
-            .weight(10f),
-            onClick = { onClick(
-                navController,
-                noteViewModel,
-                textStateTitle.value.text,
-                textStateNote.value.text,
-            )
-            },
-            enabled = !textStateTitle.value.text.equals("")
 
-        ){
-            Text(text = "add")
-        }
+
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth()
@@ -68,7 +54,19 @@ fun NewNote(
             label = { Text(text = "Content")}
         )
 
-    }
+    }}, topBar = {Button(modifier = Modifier.padding(40.dp,0.dp),
+            onClick = { onClick(
+                navController,
+                noteViewModel,
+                textStateTitle.value.text,
+                textStateNote.value.text,
+            )
+            },
+            enabled = !textStateTitle.value.text.equals("")
+
+        ){
+            Text(text = "add")
+        }})
 }
 fun onClick(navController: NavHostController,noteViewModel: NoteViewModel,title:String,text :String){
 

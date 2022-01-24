@@ -3,7 +3,6 @@ package com.example.notesapp.viewmodel
 import androidx.lifecycle.*
 import com.example.notesapp.data.Note
 import com.example.notesapp.data.NoteRepository
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 
 

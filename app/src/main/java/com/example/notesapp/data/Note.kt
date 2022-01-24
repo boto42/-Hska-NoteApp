@@ -2,10 +2,9 @@ package com.example.notesapp.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Date
-import java.time.LocalDateTime
 
-@Entity()
+
+@Entity
 data class Note(
     @PrimaryKey(autoGenerate = true)
     val id:Long,
