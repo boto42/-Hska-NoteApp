@@ -22,6 +22,7 @@ import com.example.notesapp.viewmodel.NoteViewModel
 
   val  _note = noteViewModel.getNote(id)
 
+
     val note = if (_note != null){
         _note
     }
@@ -41,7 +42,8 @@ fun onClick(note: Note,navController: NavHostController,noteViewModel: NoteViewM
 @Composable
 fun Content(note:Note,navController: NavHostController,noteViewModel: NoteViewModel){
     val scaffoldState = rememberScaffoldState()
-    val scroll = rememberScrollState(0)
+    val scroll = rememberScrollState()
+
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = { TopAppBar(title = {
@@ -55,8 +57,10 @@ fun Content(note:Note,navController: NavHostController,noteViewModel: NoteViewMo
         floatingActionButton = { FloatingActionButton(onClick = { onClick(note,navController,noteViewModel)}){
             Text(text = stringResource(R.string.delete))
         } },
-        content = { Text(modifier= Modifier.verticalScroll(scroll),
-                text= note.text) }
+        content = { Text(
+            text= note.text,
+            modifier= Modifier.verticalScroll(scroll),
+                ) }
 
     )
 
