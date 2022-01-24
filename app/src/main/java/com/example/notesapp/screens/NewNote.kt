@@ -50,7 +50,7 @@ fun NewNote(
                 .fillMaxWidth()
                 .verticalScroll(scroll)
                 .weight(1f),
-            maxLines = 20,
+
             value = textStateNote.value,
             onValueChange = { textStateNote.value = it },
             placeholder = {Text(text= stringResource(id = R.string.placeholder_content) )},

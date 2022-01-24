@@ -41,7 +41,7 @@ fun onClick(note: Note,navController: NavHostController,noteViewModel: NoteViewM
 @Composable
 fun Content(note:Note,navController: NavHostController,noteViewModel: NoteViewModel){
     val scaffoldState = rememberScaffoldState()
-    val scroll = rememberScrollState()
+    val scroll = rememberScrollState(0)
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = { TopAppBar(title = {
