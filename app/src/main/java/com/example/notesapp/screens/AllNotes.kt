@@ -40,8 +40,9 @@ fun AllNotes(
                 .fillMaxSize()
         ) {
             items(items = notes) { note ->
-                Surface(modifier = Modifier
+                Card(modifier = Modifier
                     .fillMaxSize()
+                    .padding(1.dp)
                     .border(
                         width = 2.dp, color = androidx.compose.ui.graphics.Color.Black,
                         shape = RectangleShape
